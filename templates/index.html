@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Images</title>
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .image-container img {
+            max-width: 45%;  /* Ensure images are responsive */
+            height: auto;
+            margin: 10px;    /* Add some spacing around the images */
+            border: 1px solid #ddd;  /* Optional: add a border for better visibility */
+        }
+        h1{
+            text-align: center;
+            color: white;
+        }
+        body {
+            background-image: url("../static/download.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        
+            }
+        label{
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+        form{
+            display: flex;
+            justify-content: center;
+
+        }
+        button{
+            border: #ddd;
+            border-radius: 20px;
+            margin-left: 20px;
+            width: 100px;
+            background-color: blue;
+            color: white;
+            height: 40px;
+            
+        }
+        button:hover{
+                background-color: rgb(35, 165, 245);
+                color: black;
+            }
+        h2{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Summarize Your Website</h1><br>
+    <label for="url">Enter URL:</label><br>
+    <form action="/generate" method="POST">
+        <input type="text" id="url" name="url" placeholder="Enter Your URL" autocomplete="off" required><br>
+        <button type="submit">Generate</button>
+    </form>
+
+    {% if image1 and image2 %}
+    <h2>Generated Images:</h2>
+    <div class="image-container">
+        <img src="{{ url_for('static', filename=image1) }}" alt="Image 1">
+        <img src="{{ url_for('static', filename=image2) }}" alt="Image 2">
+    </div>
+    {% endif %}
+</body>
+</html>
